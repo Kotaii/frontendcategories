@@ -39,7 +39,7 @@
                 </td>
                 <td>{{ payment.orderId }}</td>
                 <td>{{ payment.orderDate | date: 'dd-MM-yyyy hh:mm:ss a' }}</td>
-                <td class="fw-bold">{{ payment.totalAmount | currency:'INR':'symbol'  }}</td>
+                <td class="fw-bold">{{ payment.totalAmount | currency:'USD':'symbol'  }}</td>
               </tr>
             </tbody>
           </table>

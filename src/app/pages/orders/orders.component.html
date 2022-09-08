@@ -43,7 +43,7 @@
                 <td>{{ prod["email"] }}</td>
                 <td>{{ prod["contact"] }}</td>
                 <!-- <td>{{ prod["address"] }}</td> -->
-                <td><strong>{{ prod["totalAmount"] | currency:'INR':'symbol':'1.0' }}</strong></td>
+                <td><strong>{{ prod["totalAmount"] | currency:'USD':'symbol':'1.0' }}</strong></td>
                 <td>
                   <button type="button" class="btn btn-sm btn-dark me-1 mb-1" (click)="openViewModal(prod, idx)">
                     View Order Details
@@ -79,11 +79,11 @@
                 <td>
                   <div class="d-flex flex-column">
                     <span>{{ prd["productTitle"] }}</span>
-                    <span class="fw-bold">{{ prd["price"] | currency:'INR':'symbol':'1.0' }}</span>
+                    <span class="fw-bold">{{ prd["price"] | currency:'USD':'symbol':'1.0' }}</span>
                   </div> 
                 </td>
                 <td>{{ prd["quantity"] }}</td>
-                <td class="fw-bold">{{ prd["totalPrice"] | currency:'INR':'symbol':'1.0' }}</td>
+                <td class="fw-bold">{{ prd["totalPrice"] | currency:'USD':'symbol':'1.0' }}</td>
               </tr>
             </tbody>
           </table>
