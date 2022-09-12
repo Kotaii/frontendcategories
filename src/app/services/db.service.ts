@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BaseUrls } from '../base-urls';
+import { Orders } from '../models/orders';
 import { Products } from '../models/products';
 import { Shipments } from '../models/shipments';
 import { Users } from '../models/users';
@@ -19,6 +20,9 @@ export class DbService {
 
   categoies: BehaviorSubject<Category[]> = new BehaviorSubject<Category[]>([]);
   categoriesRetreivedBool: boolean = false;
+
+  orders: BehaviorSubject<Orders[]> = new BehaviorSubject<Orders[]>([]);
+  ordersRetrievedBool: boolean = false;
   
   products: BehaviorSubject<Products[]> = new BehaviorSubject<Products[]>([]);
   productsRetreivedBool: boolean = false;
@@ -78,6 +82,19 @@ export class DbService {
         next: ({ data }) => {
           this.shipments.next(data);
           this.shipmentRetreivedBool = true;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      })
+  }
+
+  getOrdersByUserid(userId: number = 0) {
+    this.httpClient.get<Response>(`${BaseUrls.BASE_HREF}/${BaseUrls.ORDER_GROUPURL}/get-user-orders/${userId}`)
+      .subscribe({
+        next: ({ data }) => {
+          this.orders.next(data);
+          this.ordersRetrievedBool = true;
         },
         error: (error) => {
           console.log(error);

@@ -19,14 +19,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users; index as idx">
-                <td>{{ idx + 1 }}</td>
+              <tr *ngFor="let user of users; index as userIdx">
+                <td>{{ userIdx + 1 }}</td>
                 <td>{{ user["fullName"] }}</td>
                 <td>{{ user["email"] }}</td>
                 <td>{{ user["street"] + " " + user["city"] + " " + user['state'] }}</td>
                 <td>{{ user["contact"] }}</td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-dark">View Orders</button>
+                  <a type="button" class="btn btn-dark me-1" [routerLink]="['./', 'ordersbyuser', user.userId]">View Orders</a>
                 </td>
               </tr>
             </tbody>

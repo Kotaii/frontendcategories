@@ -10,6 +10,7 @@ import { PaymentsComponent } from '../../pages/payments/payments.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from '../../pages/categories/categories.component';
+import { OrdersByUserComponent } from 'src/app/orders-by-user/orders-by-user.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CategoriesComponent } from '../../pages/categories/categories.component
     UsersComponent,
     ShipmentsComponent,
     PaymentsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    OrdersByUserComponent
   ],
   imports: [
     CommonModule,
