@@ -10,11 +10,7 @@ pipeline {
                 git 'https://github.com/latifb2022/estore-admin-dashboard.git'
 
                 // Run npm install
-<<<<<<< HEAD
-                sh "npm install -force"
-=======
                 sh "npm install --force"
->>>>>>> dbe433c28730301f94079f7c839f3018dc1418de
 
                 echo 'Source Stage Finished'
             }
@@ -36,7 +32,7 @@ pipeline {
             }
         }
 
-        /* stage('Containerize') {
+        stage('Containerize') {
             steps {
 
                 // Run docker command to build a container
@@ -54,6 +50,6 @@ pipeline {
 
                 echo 'Deploy the App with Docker'
             }
-        } */
+        } 
     }
 }
