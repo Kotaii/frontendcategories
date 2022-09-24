@@ -46,7 +46,7 @@ pipeline {
             steps {
 
                 // Run the image in port 9090 and local port 8080 is blocked
-                sh "docker run -d -p 9090:80 estore-admin"
+                sh "docker run -d -p 9080:80 estore-admin"
 
                 echo 'Deploy the App with Docker'
             }
