@@ -1,6 +1,6 @@
 
 
-Welcome to the estore Admin Dashboard app!
+Welcome to the estore Admin Dashboard!
 # AdminDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
