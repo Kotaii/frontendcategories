@@ -10,7 +10,7 @@ pipeline {
                 git 'https://github.com/latifb2022/estore-admin-dashboard.git'
 
                 // Run npm install
-                sh "npm install"
+                sh "npm install --force"
 
                 echo 'Source Stage Finished'
             }
