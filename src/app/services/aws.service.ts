@@ -6,13 +6,13 @@ import { S3, config, Credentials } from 'aws-sdk';
 })
 export class AwsService {
 
-  BUCKET_NAME: string = 'estoreprodimages';
+  BUCKET_NAME: string = 'BUCKET-NAME';
 
   constructor() { 
     // AWS Credentials
     config.update({
       region: 'us-west-1',
-      credentials: new Credentials('AKIAZZXC7YN7DJUTKV4A', 'rdXDokaJ6j32Le09d1DHA3De7aEOfTo8c4JGNgOq')
+      credentials: new Credentials('your-key', 'your_secret')
     })
   }
 
