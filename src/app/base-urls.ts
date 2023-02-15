@@ -1,7 +1,8 @@
 export class BaseUrls {
 
-  public static readonly BASE_HREF: string = "http://ec2-35-93-87-188.us-west-2.compute.amazonaws.com:9090";
-
+  //public static readonly BASE_HREF: string = "http://ec2-54-176-200-117.us-west-1.compute.amazonaws.com:3306";
+  public static readonly BASE_HREF: string = "http://localhost:9090";
+  
   public static readonly ADMIN_GROUPURL: string = "adminauth";
   public static readonly USER_GROUPURL: string = "users";
   public static readonly SHIPMENT_GROUPURL: string = "shipments";

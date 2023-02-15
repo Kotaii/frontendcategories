@@ -1,3 +1,5 @@
+import { FileHandle } from "./file-handle.model";
+
 export class Category {
   categoryId: any;
   categoryName?: string;

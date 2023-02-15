@@ -4,7 +4,7 @@
 
 .notSelectedLoginType {
   background: white;
-  color: black;
+  color: rgba(0, 0, 0, 0.668);
 }
 
 .bg-default {
@@ -34,8 +34,8 @@
 #btn1 {
   background-image: linear-gradient(
     to bottom right,
-    #0575e6,
-    #021b79
+    #6705e6,
+    #427902
   ); /* Standard syntax (must be last) */
 }
 
@@ -95,7 +95,7 @@
 #bg {
   background: linear-gradient(
     to bottom right,
-    #0575e6,
-    #021b79
+    #8805e6,
+    #307902
   ); /* Standard syntax (must be last) */
 }

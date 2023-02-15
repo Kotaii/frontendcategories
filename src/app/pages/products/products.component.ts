@@ -1,14 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { combineLatest, Observable } from 'rxjs';
+import { combineLatest} from 'rxjs';
 import { BaseUrls } from 'src/app/base-urls';
 import { Category } from 'src/app/models/category';
-import { Products } from 'src/app/models/products';
+import { Products} from 'src/app/models/products';
 import { AwsService } from 'src/app/services/aws.service';
 import { DbService } from 'src/app/services/db.service';
+import {Observable} from 'rxjs';
+import { FileHandle } from 'src/app/models/file-handle.model';
+import { DomSanitizer } from '@angular/platform-browser';
+//import { ProductService } from 'src/app/services/product.service';
+
 
 @Component({
   selector: 'app-products',
@@ -26,21 +31,31 @@ export class ProductsComponent implements OnInit {
 
   productForm: FormGroup = new FormGroup({});
 
+  
   productModel: Products | undefined;
+  
+  imageUrl: any;
 
-  products: Products[] = [];
+   products: Products[] = [];
+  
+  
+  
+  
   categories: Category[] = [];
-  // public prodObservable: Observable<any[]> = new Observable();
-  // public categoryObservable: Observable<any[]> = new Observable();
+   public prodObservable: Observable<any[]> = new Observable();
+   public categoryObservable: Observable<any[]> = new Observable();
+   //productService: any;
 
   constructor(
     private fb: FormBuilder,
     private db: DbService,
-    private aws: AwsService,
+     private aws: AwsService,
     private httpClient: HttpClient,
     private modalService: NgbModal,
-    private toast: ToastrService
-  ) { }
+    private toast: ToastrService,
+    //private productService: ProductService,
+    //private sanitizer: DomSanitizer, 
+    ) { }
 
   ngOnInit(): void {
     this.db.getProducts();
@@ -48,10 +63,10 @@ export class ProductsComponent implements OnInit {
 
     combineLatest([this.db.products, this.db.categoies])
       .subscribe(([products, categories]) => {
-        if(products.length !== 0) this.products = products;
+         if(products.length !== 0) this.products = products;
         if(categories.length !== 0) this.categories = categories;
       });
-  }
+   }
 
   openModal(modal: any, prd: Products | null = null) {
     this.tempImageFiles = []; 
@@ -104,7 +119,79 @@ export class ProductsComponent implements OnInit {
   compareByCategoryId(category1: Category, category2: Category) {
     return category1 && category2 && category1.categoryId === category2.categoryId;
   }
+  
+  // addProduct(productForm: NgForm) {
+  //   this.productService.addProduct(this.products).subscribe(
+  //     {response:Products} =>{
+  //       productForm.reset();
+  //     },
+  //     (error:HttpErrorResponse)=>{
+  //       console.log(error);
+  //     }
+  //   );
+    
+      // };
+      
+    
+  
+  
+  
+  
+  
+  // prepareFormData(product: Products) : FormData {
+  //   const formData = new FormData();
 
+  //   formData.append(
+  //     'product',
+  //     new Blob([JSON.stringify(product)], {type: 'application/json'})
+
+  //   );
+   
+  //   for (var i= 0; i < product.productImages.length; i++) {
+  //     formData.append(
+  //       'imageFile',
+  //       product.productImages[i].file,
+  //       product.productImages[i].file.name
+  //     );
+  //   }
+    
+  //   return formData;
+  
+  // }
+    
+  //  onFileSelected(event:any) {
+  //     if(event.target.files) {
+  //        const file = event.target.files[0];
+
+  //        const fileHandle: FileHandle = {
+  //         file: file,
+  //         url:  this.sanitizer.bypassSecurityTrustUrl(
+  //           window.URL.createObjectURL(file)
+  //         )
+  //       }
+  //          this.product.productImages.push(fileHandle); 
+      
+  //     }
+  //    }
+  
+  
+  
+  
+  
+  // onFileSelected(event:any) {
+  //   if(event.target.files) {
+  //      const file = event.target.files[0];
+
+  //      const fileHandle: FileHandle = {
+  //       file: file,
+  //       url:  this.sanitizer.bypassSecurityTrustUrl(
+  //         window.URL.createObjectURL(file)
+  //       )
+  //     }
+  //        this.products.productImages.push(fileHandle); 
+    
+    // }
+  //  }
   checkImageFileType(event: any) {
     let fileList: File[] = Object.assign([], event.target.files);
     fileList.forEach((file: any, idx: number) => {
@@ -115,7 +202,7 @@ export class ProductsComponent implements OnInit {
       ) {
         this.tempImageFiles.push(file);
       } else {
-        // this.toast.warning("Only .png/.jpeg/.jpg file format accepted!!", file.name + " will not accepted.");
+        this.toast.warning("Only .png/.jpeg/.jpg file format accepted!!", file.name + " will not accepted.");
       }
     });
   }
@@ -174,7 +261,7 @@ export class ProductsComponent implements OnInit {
     }
     return imageDownloadedUrl;
   }
-
+  
   checkFileType(value: any) {
     return typeof value !== 'string' ? value.name : String(value).substring(String(value).lastIndexOf("/")).replace("/", "");
   }
@@ -227,4 +314,13 @@ export class ProductsComponent implements OnInit {
     window.open(url, "_blank")
   }
 
+    
 }
+
+
+
+
+
+
+
+

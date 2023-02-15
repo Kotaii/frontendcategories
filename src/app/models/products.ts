@@ -1,7 +1,7 @@
 import { Category } from "./category";
 
 export class Products {
-  productId?: string;
+  productId?: any;
   productTitle?: string;
   productCode?: string;
   productDescription?: string;

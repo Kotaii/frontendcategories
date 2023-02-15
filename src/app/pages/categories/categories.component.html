@@ -68,11 +68,11 @@
       <div class="form-group col mt-2">
         <label for="imageFile">Select Image File</label>
         <div class="custom-file">
-          <input type="file" class="form-control" id="imageFile" (change)="checkFileType($event)">
-          <!-- <label class="custom-file-label p-1 d-flex align-items-center" for="imageFile">
+          <input type="file" class="form-control" id="imageFile" (change)="onFileSelected($event)">
+          <label class="custom-file-label p-1 d-flex align-items-center" for="imageFile">
             <span *ngIf="tempFile == null">Choose file</span>
             <span *ngIf="tempFile != null">{{ tempFile.name }}</span>
-          </label> -->
+          </label>
         </div>
       </div>
       <div class="form-group col mt-2 d-flex flex-column">
